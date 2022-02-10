@@ -3,13 +3,13 @@
 #:X:Synset('faculty.n.01'):A:Synset('belief.n.01'):B:Synset('memory.n.01'):EQUIV:0.25:XA:0.2:XB:0.16666666666666666 faculty - > memory via the method of belief
 from nltk.corpus import wordnet as wn
 file_object = open('causation_schematic', 'w')
-with open("elements.txt") as file:
+with open("objects.txt") as file:
     for x in file:
         x = x.rstrip("\n")
         checkA = wn.synsets(x)
         if wn.synsets(x):
             print(checkA[0].name())
-            with open("elements.txt") as another_file:
+            with open("objects.txt") as another_file:
                 for y in another_file:
                     y = y.rstrip("\n")
                     checkB = wn.synsets(y)
@@ -17,7 +17,7 @@ with open("elements.txt") as file:
                         scanA = checkA[0]
                         scanB = checkB[0]
                         scanEquiv = wn.path_similarity(checkA[0], checkB[0])
-                        with open("elements2.txt") as another_fileB:
+                        with open("actions.txt") as another_fileB:
                             for z in another_fileB:
                                 z = z.rstrip("\n")
                                 checkC = wn.synsets(z)
