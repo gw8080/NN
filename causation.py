@@ -17,7 +17,7 @@ with open("elements.txt") as file:
                         scanA = checkA[0]
                         scanB = checkB[0]
                         scanEquiv = wn.path_similarity(checkA[0], checkB[0])
-                        with open("elements.txt") as another_fileB:
+                        with open("elements2.txt") as another_fileB:
                             for z in another_fileB:
                                 z = z.rstrip("\n")
                                 checkC = wn.synsets(z)

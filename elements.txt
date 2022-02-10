@@ -4,7 +4,8 @@ otter
 seal
 whale
 fish
-flatfish
+flat
+fish
 ray
 shark
 trout
@@ -99,7 +100,7 @@ willow
 bicycle
 bus
 motorcycle
-pickuptruck
+truck
 train
 lawn-mower
 rocket
