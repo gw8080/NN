@@ -25,7 +25,7 @@ with open("elements.txt") as file:
                                     scanX = checkC[0]
                                     scanA2 = wn.path_similarity(checkA[0], checkC[0])
                                     scanB2 = wn.path_similarity(checkB[0], checkC[0])
-                                    i = 0.1
+                                    i = 0.2
                                     if checkA != checkB and checkA != checkC and checkB != checkC:  
                                         if scanA2 > scanB2:
                                             if float(scanB2) > i:
