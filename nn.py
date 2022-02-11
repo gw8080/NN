@@ -12,8 +12,11 @@ import pyautogui
 import webbrowser
 import vlc
 import pafy
+import random
+from time import sleep
+from nltk.corpus import wordnet as wn
+from nltk.tokenize import word_tokenize
 option = input ("Do you want to: load or save the model. [load/save]? : ")
-dataset_url = "https://storage.googleapis.com/download.tensorflow.org/example_images/flower_photos.tgz"
 data_dir = pathlib.Path("C:\\Users\\George\\.keras\\datasets\\DB")
 image_count = len(list(data_dir.glob('*/*.jpg')))
 print(image_count)
@@ -96,26 +99,32 @@ if option == "load":
 #cv2.destroyAllWindows()
 
 # take screenshot using pyautogui
-i = 0
-while(True):
-    i += 1
-    image = pyautogui.screenshot()
-    image = cv2.cvtColor(np.array(image),
+    i = 0
+    file_object = open('temp.txt', 'w')
+    while(True):
+        i += 1
+        image = pyautogui.screenshot()
+        image = cv2.cvtColor(np.array(image),
                      cv2.COLOR_RGB2BGR)
-    cv2.imwrite("frame.png", image)
-    sunflower_path = 'Frame.png'
-    img = tf.keras.utils.load_img(
-    sunflower_path, target_size=(img_height, img_width)
-    )
-    img_array = tf.keras.utils.img_to_array(img)
-    img_array = tf.expand_dims(img_array, 0) # Create a batch
-    predictions = model.predict(img_array)
-    score = tf.nn.softmax(predictions[0])
-    print(class_names)
-    print("{}".format(score)
-    )
-    print(
-    "This image most likely belongs to {} with a {:.2f} percent confidence."
-    .format(class_names[np.argmax(score)], 100 * np.max(score))
-)
-    
+        cv2.imwrite("frame.png", image)
+        sunflower_path = 'Frame.png'
+        img = tf.keras.utils.load_img(
+        sunflower_path, target_size=(img_height, img_width)
+        )
+        img_array = tf.keras.utils.img_to_array(img)
+        img_array = tf.expand_dims(img_array, 0) # Create a batch
+        predictions = model.predict(img_array)
+        score = tf.nn.softmax(predictions[0])
+        print(
+        "This image most likely belongs to {} with a {:.2f} percent confidence."
+        .format(class_names[np.argmax(score)], 100 * np.max(score))
+        )
+        #syn_arr = wn.synsets(str(class_names[np.argmax(score)]))
+        #scan = syn_arr[0].name()
+        #scan2 = wn.synsets(str(class_names[np.argmax(score)]))[0]
+        #data = list(set([w for s in scan2.closure(lambda s:s.hyponyms()) for w in s.lemma_names()]))
+        #var = random.choice(data)
+        #print(var)
+        #search = "https://www.google.com/search?q=" + var + "&sclient=img"
+        #webbrowser.open_new_tab(search)
+        #sleep(2.5)
