@@ -73,6 +73,7 @@ epochs=epochs
     val_acc = history.history['val_accuracy']
     loss = history.history['loss']
     val_loss = history.history['val_loss']
+    model.save("my_model")
 if option == "load":
     model = keras.models.load_model("my_model")
     cap = cv2.VideoCapture(0)
