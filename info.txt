@@ -1,1 +1,1 @@
-Continual subsets selects causal taxonomy in a feedback loop. 
+DB as folder with classification targets containing training data e.g  DB\\mountain\\, DB\\cat\\, DB\\fish\\,
