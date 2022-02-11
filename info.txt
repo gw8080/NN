@@ -1,1 +1,1 @@
-Modifying tensorflow to function as neural inspiration, it requires a feedback loop, each time processing differently and where the beginning selects causal taxonomy. 
+Continual subsets selects causal taxonomy in a feedback loop. 
