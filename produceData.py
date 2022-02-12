@@ -9,7 +9,7 @@ import time
 i = 0
 folderint = 0
 saveLimit = 42
-attentionThreshold = 1.0 #seconds
+attentionThreshold = 0.5 #seconds
 tic = time.process_time()
 reset = 0
 print("Collecting data...")
