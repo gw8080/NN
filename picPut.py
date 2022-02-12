@@ -17,5 +17,5 @@ for file in onlyfiles:
         if os.path.isdir(dirname) == False:
             os.mkdir(dirname)
             print(file)
-            Path(mypath "\\" + str(file)).rename(mypath + str(foldername[0]) + "\\" + str(file))
+            Path(mypath + "\\" + str(file)).rename(mypath + str(foldername[0]) + "\\" + str(file))
             
