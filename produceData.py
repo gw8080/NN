@@ -2,16 +2,22 @@ import cv2
 import pyautogui
 import numpy as np
 from time import sleep
-from pynput.mouse import Listener
+from pynput import mouse
 import os
 import logging
-#fix lag
+import time
 i = 0
 folderint = 0
+attentionThreshold = 1.0 #seconds
+tic = time.process_time()
+reset = 0
 print("Collecting data...")
 def on_move(x, y):
-    global i
-    return i
+    global tic
+    tic = time.process_time()
+    global reset
+    reset = 1
+    return tic
 def on_click(x, y, button, pressed):
     if pressed:
         global folderint
@@ -19,7 +25,18 @@ def on_click(x, y, button, pressed):
         return folderint
 
 def on_scroll(x, y, dx, dy):
-    global i
+    global tic
+    tic = time.process_time()
+    global reset
+    reset = 1
+    return tic
+    
+listener = mouse.Listener(
+    on_move=on_move,
+    on_click=on_click,
+    on_scroll=on_scroll)
+listener.start()
+while(True):
     image = pyautogui.screenshot()
     image = cv2.cvtColor(np.array(image),
     cv2.COLOR_RGB2BGR)
@@ -28,6 +45,7 @@ def on_scroll(x, y, dx, dy):
         os.mkdir(dirname)
     cv2.imwrite(str(folderint) + "\\frame" + str(i) +".png", image)
     i = i + 1
-    return i
-with Listener(on_move=on_move, on_click=on_click, on_scroll=on_scroll) as listener:
-    listener.join()
+    toc = time.process_time()
+    if toc-tic > attentionThreshold and reset == 1:
+        reset = 0
+        folderint = folderint + 1
