@@ -10,8 +10,6 @@ import pathlib
 import cv2
 import pyautogui
 import webbrowser
-import vlc
-import pafy
 import random
 from time import sleep
 from nltk.corpus import wordnet as wn
