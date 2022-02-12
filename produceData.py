@@ -11,14 +11,6 @@ folderint = 0
 print("Collecting data...")
 def on_move(x, y):
     global i
-    image = pyautogui.screenshot()
-    image = cv2.cvtColor(np.array(image),
-    cv2.COLOR_RGB2BGR)
-    dirname = str(folderint)
-    if os.path.isdir(dirname) == False:
-        os.mkdir(dirname)
-    cv2.imwrite(str(folderint) + "\\frame" + str(i) +".png", image)
-    i = i + 1
     return i
 def on_click(x, y, button, pressed):
     if pressed:
