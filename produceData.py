@@ -8,6 +8,7 @@ import logging
 import time
 i = 0
 folderint = 0
+saveLimit = 42
 attentionThreshold = 1.0 #seconds
 tic = time.process_time()
 reset = 0
@@ -36,6 +37,7 @@ listener = mouse.Listener(
     on_click=on_click,
     on_scroll=on_scroll)
 listener.start()
+n = 0
 while(True):
     image = pyautogui.screenshot()
     image = cv2.cvtColor(np.array(image),
@@ -43,9 +45,12 @@ while(True):
     dirname = str(folderint)
     if os.path.isdir(dirname) == False:
         os.mkdir(dirname)
-    cv2.imwrite(str(folderint) + "\\frame" + str(i) +".png", image)
-    i = i + 1
+    if n < saveLimit:
+        cv2.imwrite(str(folderint) + "\\frame" + str(i) +".png", image)
+        i = i + 1
+        n = n + 1
     toc = time.process_time()
     if toc-tic > attentionThreshold and reset == 1:
         reset = 0
+        n = 0
         folderint = folderint + 1
