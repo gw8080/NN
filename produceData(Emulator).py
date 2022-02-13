@@ -14,8 +14,6 @@ attentionThreshold = 0.01 #seconds
 tic = time.process_time()
 restAmount = 1
 print("Collecting data...")
-
-
 def on_press(key):
 
     global i
@@ -42,7 +40,6 @@ def on_press(key):
     
     return rest
 
-   
 def on_release(key):
     try:
         print ("key released")    
