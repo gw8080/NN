@@ -99,7 +99,6 @@ if option == "load":
 
 # take screenshot using pyautogui
     i = 0
-    keyboard = Controller()
     while(True):
         i += 1
         image = pyautogui.screenshot()
