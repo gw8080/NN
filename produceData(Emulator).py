@@ -10,12 +10,9 @@ from pynput import keyboard
 i = 0
 rest = 0
 folderint = 0
-attentionThreshold = 0.01 #seconds
-tic = time.process_time()
 restAmount = 1
 print("Collecting data...")
 def on_press(key):
-
     global i
     global rest
     try:
@@ -37,7 +34,6 @@ def on_press(key):
     except AttributeError:
         print('error')
         rest = 0
-    
     return rest
 
 def on_release(key):

@@ -75,29 +75,6 @@ epochs=epochs
 if option == "load":
     model = keras.models.load_model("my_model")
     cap = cv2.VideoCapture(0)
-#webcam stuff
-#   while(cap.isOpened()):
-#        ret, frame = cap.read()
-#        if ret == False:
-#            break
-#        cv2.imwrite('Frame'+str(i)+'.jpg', frame)
-#        sunflower_path = 'Frame'+str(i)+'.jpg'
-#        img = tf.keras.utils.load_img(
-#        sunflower_path, target_size=(img_height, img_width)
-#        )
-#        img_array = tf.keras.utils.img_to_array(img)
-#        img_array = tf.expand_dims(img_array, 0) # Create a batch
-#        predictions = model.predict(img_array)
-#        score = tf.nn.softmax(predictions[0])
-#        print(
-#        "This image most likely belongs to {} with a {:.2f} percent confidence."
-#        .format(class_names[np.argmax(score)], 100 * np.max(score))
-#        )
-#        i += 1
-#cap.release()
-#cv2.destroyAllWindows()
-
-# take screenshot using pyautogui
     i = 0
     while(True):
         i += 1
