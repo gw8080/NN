@@ -17,6 +17,7 @@ print("Collecting data...")
 
 def on_press(key):
     global i
+    sleep(0.001)
     try:
         image = pyautogui.screenshot()
         image = cv2.cvtColor(np.array(image),
@@ -29,20 +30,15 @@ def on_press(key):
         if os.path.isdir(key.char) == True:
             cv2.imwrite(str(key.char) + "\\frame" + str(i) +".png", image)
             i += 1
+        
     except AttributeError:
-        print('special key {0} pressed'.format(
-            key))
-    return i
+        print('error')
 
 def on_release(key):
-    if key == keyboard.Key.esc:
-        # Stop listener
-        return False
-
-listener = keyboard.Listener(
-    on_press=on_press,
-    on_release=on_release)
-listener.start()
-while(True):
-    if i == True:
-        sleep(0.001)
+   print ("key released")
+            
+    
+with keyboard.Listener(
+        on_press=on_press,
+        on_release=on_release) as listener:
+    listener.join()
