@@ -30,18 +30,18 @@ if option == "save":
 
 if option == "predict":
     # load the dataset
-    dataset = loadtxt('testdata.csv', delimiter=',')
+    dataset = loadtxt('predictdata.csv', delimiter=',')
     # split into input (X) and output (y) variables
     X = dataset[:,0:8]
     y = dataset[:,8]
     # define the keras model
     model = keras.models.load_model("my_prediction_model")
-    #model = Sequential()
-    #model.add(Dense(12, input_dim=8, activation='relu'))
-    #model.add(Dense(8, activation='relu'))
-    #model.add(Dense(1, activation='sigmoid'))
+    model = Sequential()
+    model.add(Dense(12, input_dim=8, activation='relu'))
+    model.add(Dense(8, activation='relu'))
+    model.add(Dense(1, activation='sigmoid'))
     # compile the keras model
-    #model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
     # fit the keras model on the dataset
     #model.fit(X, y, int(input("epochs:")), batch_size=10, verbose=0)
     # make class predictions with the model
