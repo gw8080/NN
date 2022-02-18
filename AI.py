@@ -19,5 +19,4 @@ while(True):
     outputs = model.generate(
     inputs, max_length=50, do_sample=True, temperature=5.0
     )
-    words = tokenizer.decode(outputs[0], skip_special_tokens=True)
     print(tokenizer.decode(outputs[0], skip_special_tokens=True))
