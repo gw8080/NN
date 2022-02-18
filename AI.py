@@ -9,7 +9,6 @@ if user_inputB == "download":
     tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
     model = GPT2LMHeadModel.from_pretrained('gpt2')
     model.save_pretrained("./cached-GPT2")
-    
 if user_inputB == "load":
     tokenizer = GPT2Tokenizer.from_pretrained('./cached-GPT2')
     model = GPT2LMHeadModel.from_pretrained('./cached-GPT2')
