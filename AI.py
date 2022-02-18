@@ -4,8 +4,15 @@ from nltk.tokenize import word_tokenize
 from transformers import GPT2LMHeadModel, GPT2Tokenizer
 
 # initialize tokenizer and model from pretrained GPT2 model
-tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
-model = GPT2LMHeadModel.from_pretrained('gpt2')
+user_inputB = input("download or exec[download/exec]?:")
+if user_inputB == "download":
+    tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
+    model = GPT2LMHeadModel.from_pretrained('gpt2')
+    model.save_pretrained("./cached-GPT2")
+    
+if user_inputB == "load":
+    tokenizer = GPT2Tokenizer.from_pretrained('./cached-GPT2')
+    model = GPT2LMHeadModel.from_pretrained('./cached-GPT2')
 while(True):
     user_input = input("USER:")
     cancel = 0
